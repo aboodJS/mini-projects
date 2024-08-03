@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+}
+
+ul {
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
