@@ -2,27 +2,35 @@ const inputField = document.getElementById("input-field");
 const addTaskBtn = document.getElementById("add-item");
 const taskList = document.querySelector("ul");
 
-window.onload = () => {
-  if (localStorage.length === 0) {
-    console.log(localStorage.length);
-  } else {
-    for (const key in localStorage) {
-      if (localStorage.hasOwnProperty(key)) {
-        let li = document.createElement("li");
-        li.textContent = localStorage.getItem(key);
-        taskList.appendChild(li);
-        console.log(localStorage.length);
-      }
-    }
-  }
-};
-
 function addTask(val) {
   localStorage.setItem(val, val);
   let li = document.createElement("li");
-  li.textContent = val;
+  let span = document.createElement("span");
+  span.textContent = val;
+  let rmBtn = document.createElement("button");
+  rmBtn.classList.add("rm");
+  li.appendChild(span);
+  li.appendChild(rmBtn);
+  rmBtn.textContent = "delete";
   taskList.appendChild(li);
+
   inputField.value = "";
+  let rms = document.querySelectorAll(".rm");
+  rms.forEach((elem) => {
+    elem.onclick = () => {
+      console.log(elem.parentElement.firstChild);
+      localStorage.removeItem(elem.previousElementSibling.textContent);
+      elem.parentElement.remove();
+    };
+  });
 }
 
 addTaskBtn.addEventListener("click", () => addTask(inputField.value));
+
+window.onload = () => {
+  for (const key in localStorage) {
+    if (localStorage.hasOwnProperty(key)) {
+      addTask(localStorage.getItem(key));
+    }
+  }
+};

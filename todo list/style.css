@@ -2,11 +2,67 @@
   box-sizing: border-box;
 }
 
+:root {
+  --pad10: 10px;
+  --border-r5: 5px;
+}
+
 body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+div {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.521) 0px 0px 6px 2px;
+}
+
+button {
+  background-color: crimson;
+  padding: var(--pad10);
+  border: none;
+  color: white;
+  font-weight: bolder;
+  font-size: large;
+}
+
+button:hover {
+  background-color: rgb(165, 8, 39);
+}
+
+input {
+  outline: none;
+  padding: var(--pad10);
+  border: none;
+  width: 300px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  font-weight: bolder;
+  font-size: large;
+  margin-block: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 130%;
+  height: 3.5rem;
+  background-color: #ddd;
+}
+
+li > * {
+  margin-inline: 1rem;
 }
